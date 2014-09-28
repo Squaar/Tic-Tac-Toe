@@ -30,4 +30,12 @@ public class Board{
 					moves.add(new Point(j, i));
 		return moves.toArray(new Point[0]);
 	}
+
+	// returns true or false depending on if the move was successful
+	public boolean move(char player, int x, int y){
+		if(board[y][x] != 'b')
+			return false;
+		board[y][x] = player;
+		return true;
+	}
 }
