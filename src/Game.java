@@ -16,4 +16,8 @@ public class Game{
 		this.board = new Board(initialBoard);
 		this.turn = 'X';
 	}
+
+	public Board board(){
+		return this.board;
+	}
 }
