@@ -47,12 +47,18 @@ public class Board{
 		return moves.toArray(new Point[0]);
 	}
 
-	// returns true or false depending on if the move was successful
-	public boolean move(char player, int x, int y){
+	public Board move(char player, int x, int y) throws Exception{
 		if(board[y][x] != 'b')
-			return false;
-		board[y][x] = player;
-		return true;
+			throw new Exception("Can't move there.");
+		char[][] newBoard = new char[3][3];
+		for(int i=0; i<3; i++)
+			for(int j=0; j<3; j++){
+				if(i==y && j==x)
+					newBoard[i][j] = player;
+				else
+					newBoard[i][j] = this.board[i][j];
+			}
+		return new Board(newBoard);
 	}
 
 	public String toString(){
