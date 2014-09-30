@@ -15,4 +15,17 @@ public class Player{
 	public Point play(){
 		return null;
 	}
+
+	public int[] optimalMoves(Board boar){
+	
+		return new int[0];
+	}
+	
+	public int min(Board board){
+		return 0;
+	}
+
+	public int max(Board board){
+		return 0;
+	}
 }

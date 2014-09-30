@@ -10,6 +10,7 @@ public class Main{
 		char[][] board = new char[3][3];
 		int k = 0;
 
+		// get input and arrange board
 		for(int i=0; i<3; i++){
 			for(int j=0; j<3; j++){
 				if(args[k].charAt(0) != 'b' && args[k].charAt(0) != 'X' && args[k].charAt(0) != 'O'){
@@ -23,5 +24,18 @@ public class Main{
 
 		Game game = new Game(board);
 		System.out.println(game.board());
+		
+		// check to see if game is already over
+		char winner = game.getWinner();
+		if(winner == 'T'){
+			System.out.println("This game was a tie.");
+			System.exit(0);
+		}
+		else if(winner == 'X' || winner == 'O'){
+			System.out.println("Player " + winner + " has won the game.");
+			System.exit(0);
+		}
+
+		int[] optimalMoves = game.getOptimalMoves();
 	}
 }
