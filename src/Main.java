@@ -36,6 +36,7 @@ public class Main{
 
 		// get optimal moves and provide output
 		int[] optimalMoves = game.getOptimalMoves();
+		System.out.println(optimalMoves);
 		if(optimalMoves.length == 0){
 			System.out.println("No optimal moves found for player X.");
 		}

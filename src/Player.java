@@ -22,15 +22,58 @@ public class Player{
 		return null;
 	}
 
-	public ArrayList<Point> optimalMoves(Board boar){
-	
-		return new ArrayList<Point>();
+	public ArrayList<Point> optimalMoves(Board board){
+		int max = -1;
+		ArrayList<Point> maxes = new ArrayList<Point>();
+		Point[] moves = board.possibleMoves();
+		for(Point move: moves){
+			Board newBoard = null;
+			try{
+				newBoard = board.move(symbol, move.x, move.y);
+			}
+			catch(Exception e){}
+			if(newBoard != null){
+				int m = max(newBoard);
+				if(m == max)
+					maxes.add(move);
+				else if(m > max){
+					max = m; 
+					maxes.clear();
+					maxes.add(move);
+				}
+			}
+		}
+		return maxes;
 	}
 	
+	// min of maxes
 	public int min(Board board){
-		return 0;
+		char winner = board.winner();
+		if(winner == 'T')
+			return 0;
+		if(winner == symbol)
+			return -1;
+		if(winner == opponent)
+			return 1;
+
+		Point[] possibleMoves = board.possibleMoves();
+		int[] maxes = new int[possibleMoves.length];
+		for(int i=0; i<possibleMoves.length; i++){
+			try{
+				Board newBoard = board.move(opponent, possibleMoves[i].x, possibleMoves[i].y);
+				maxes[i] = max(newBoard);
+			}
+			catch(Exception e){}
+		}
+
+		int min = maxes[0];
+		for(int max: maxes)
+			if(max < min)
+				min = max;
+		return min;
 	}
 
+	// max of mins
 	public int max(Board board){
 		char winner = board.winner();
 		if(winner == 'T')
@@ -40,13 +83,20 @@ public class Player{
 		if(winner == opponent)
 			return -1;
 
-		//return max of mins?
 		Point[] possibleMoves = board.possibleMoves();
 		int[] mins = new int[possibleMoves.length];
 		for(int i=0; i<possibleMoves.length; i++){
-			Board newBoard = board.move(symbol, move.x, move.y);
-			mins[i] = min(newBoard);
+			try{
+				Board newBoard = board.move(symbol, possibleMoves[i].x, possibleMoves[i].y);
+				mins[i] = min(newBoard);
+			}
+			catch(Exception e){}
 		}
 
+		int max = mins[0];
+		for(int min: mins)
+			if(min > max)
+				max = min;
+		return max;
 	}
 }
