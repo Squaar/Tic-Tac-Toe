@@ -1,4 +1,5 @@
 import java.awt.Point;
+import java.util.ArrayList;
 
 public class Player{
 
@@ -16,9 +17,9 @@ public class Player{
 		return null;
 	}
 
-	public int[] optimalMoves(Board boar){
+	public ArrayList<Point> optimalMoves(Board boar){
 	
-		return new int[0];
+		return new ArrayList<Point>();
 	}
 	
 	public int min(Board board){

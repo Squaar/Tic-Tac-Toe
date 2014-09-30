@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Main{
 	public static void main(String[] args){
 		if(args.length != 9){
@@ -36,6 +34,16 @@ public class Main{
 			System.exit(0);
 		}
 
+		// get optimal moves and provide output
 		int[] optimalMoves = game.getOptimalMoves();
+		if(optimalMoves.length == 0){
+			System.out.println("No optimal moves found for player X.");
+		}
+		else{
+			System.out.print("The optimal moves for player X are: ");
+			for(int i: optimalMoves)
+				System.out.print(i + " ");
+			System.out.println();
+		}
 	}
 }

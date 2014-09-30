@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.awt.Point;
+
 public class Game{
 	
 	private Board board;
@@ -35,6 +38,21 @@ public class Game{
 		if(getWinner() == 'b' || getWinner() == 'T')
 			return new int[0];
 
-		return turn.optimalMoves(board);
+		ArrayList<Point> optimalMoves =  turn.optimalMoves(board);
+		ArrayList<Integer> numerical = new ArrayList<Integer>();
+		int k = 0;
+		for(int i=0; i<3; i++)
+			for(int j=0; j<3; j++){
+				if(optimalMoves.contains(new Point(j, i)))
+					numerical.add(k);
+				k++;
+			}	
+
+		// java primitives suck
+		int[] ans = new int[numerical.size()];
+		for(int i=0; i<numerical.size(); i++){
+			ans[i] = numerical.get(i);
+		}
+		return ans;
 	}
 }
