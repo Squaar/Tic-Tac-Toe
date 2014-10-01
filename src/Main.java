@@ -1,6 +1,6 @@
 public class Main{
 	public static void main(String[] args){
-		System.out.println("Matt Dumford\nmdumfo2@uic.edu");
+		System.out.println("Matt Dumford - mdumfo2@uic.edu");
 		if(args.length != 9){
 			System.err.println("Incorrect number of arguments.");
 			System.exit(1);
@@ -31,7 +31,7 @@ public class Main{
 			System.exit(0);
 		}
 		else if(winner == 'X' || winner == 'O'){
-			System.out.println("Player " + winner + " has won the game.");
+			System.out.println("Player " + winner + " has already won the game.");
 			System.exit(0);
 		}
 

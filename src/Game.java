@@ -34,6 +34,7 @@ public class Game{
 		return this.board.winner();
 	}
 
+	// gets minimax answer from player and converts points to numerical values
 	public int[] getOptimalMoves(){
 		if(getWinner() != 'b' && getWinner() != 'T')
 			return new int[0];

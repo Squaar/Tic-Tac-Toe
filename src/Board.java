@@ -8,6 +8,7 @@ public class Board{
 		this.board = board;
 	}
 
+	// check to see if game is over, returns who won, T=tie, b=game isn't over yet.
 	public char winner(){
 		// check for tie
 		boolean found = false;
@@ -38,6 +39,7 @@ public class Board{
 		return 'b';
 	}
 
+	// returns locations of blank spots on the board
 	public Point[] possibleMoves(){
 		ArrayList<Point> moves = new ArrayList<Point>();
 		for(int i=0; i<3; i++)
@@ -47,6 +49,8 @@ public class Board{
 		return moves.toArray(new Point[0]);
 	}
 
+	// generates new board when a player makes a move
+	// throws exception when a player can't move there.
 	public Board move(char player, int x, int y) throws Exception{
 		if(board[y][x] != 'b')
 			throw new Exception("Can't move there.");

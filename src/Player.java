@@ -18,10 +18,11 @@ public class Player{
 		return this.symbol;
 	}
 
-	public Point play(){
-		return null;
+	public char opponent(){
+		return this.opponent;
 	}
 
+	// Performs minimax - returns all maxes of mins
 	public ArrayList<Point> optimalMoves(Board board){
 		int min = -1;
 		ArrayList<Point> mins = new ArrayList<Point>();
