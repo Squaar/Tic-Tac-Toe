@@ -1,5 +1,6 @@
 public class Main{
 	public static void main(String[] args){
+		System.out.println("Matt Dumford\nmdumfo2@uic.edu");
 		if(args.length != 9){
 			System.err.println("Incorrect number of arguments.");
 			System.exit(1);
@@ -21,7 +22,7 @@ public class Main{
 		}
 
 		Game game = new Game(board);
-		System.out.println(game.board());
+		System.out.println(game.board().toStringPretty());
 		
 		// check to see if game is already over
 		char winner = game.getWinner();
@@ -36,7 +37,6 @@ public class Main{
 
 		// get optimal moves and provide output
 		int[] optimalMoves = game.getOptimalMoves();
-		System.out.println(optimalMoves);
 		if(optimalMoves.length == 0){
 			System.out.println("No optimal moves found for player X.");
 		}

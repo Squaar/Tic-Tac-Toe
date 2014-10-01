@@ -35,12 +35,10 @@ public class Game{
 	}
 
 	public int[] getOptimalMoves(){
-		System.out.println(getWinner());
 		if(getWinner() != 'b' && getWinner() != 'T')
 			return new int[0];
 
 		ArrayList<Point> optimalMoves =  turn.optimalMoves(board);
-		System.out.println(optimalMoves);
 		ArrayList<Integer> numerical = new ArrayList<Integer>();
 		int k = 0;
 		for(int i=0; i<3; i++)

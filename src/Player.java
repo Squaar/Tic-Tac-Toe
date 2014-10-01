@@ -23,8 +23,8 @@ public class Player{
 	}
 
 	public ArrayList<Point> optimalMoves(Board board){
-		int max = -1;
-		ArrayList<Point> maxes = new ArrayList<Point>();
+		int min = -1;
+		ArrayList<Point> mins = new ArrayList<Point>();
 		Point[] moves = board.possibleMoves();
 		for(Point move: moves){
 			Board newBoard = null;
@@ -33,17 +33,17 @@ public class Player{
 			}
 			catch(Exception e){}
 			if(newBoard != null){
-				int m = max(newBoard);
-				if(m == max)
-					maxes.add(move);
-				else if(m > max){
-					max = m; 
-					maxes.clear();
-					maxes.add(move);
+				int m = min(newBoard);
+				if(m == min)
+					mins.add(move);
+				else if(m > min){
+					min = m; 
+					mins.clear();
+					mins.add(move);
 				}
 			}
 		}
-		return maxes;
+		return mins;
 	}
 	
 	// min of maxes
@@ -52,9 +52,9 @@ public class Player{
 		if(winner == 'T')
 			return 0;
 		if(winner == symbol)
-			return -1;
-		if(winner == opponent)
 			return 1;
+		if(winner == opponent)
+			return -1;
 
 		Point[] possibleMoves = board.possibleMoves();
 		int[] maxes = new int[possibleMoves.length];

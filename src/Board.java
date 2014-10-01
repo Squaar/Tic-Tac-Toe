@@ -68,4 +68,18 @@ public class Board{
 				str += this.board[i][j] + " ";
 		return str;
 	}
+
+	public String toStringPretty(){
+		String str = "";
+		for(int i=0; i<3; i++){
+			for(int j=0; j<3; j++){
+				if(this.board[i][j] != 'b')
+					str += this.board[i][j];
+				else
+					str += "_";
+			}
+			str += "\n";
+		}
+		return str;
+	}
 }
