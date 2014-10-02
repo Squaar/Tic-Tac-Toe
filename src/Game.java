@@ -35,16 +35,16 @@ public class Game{
 	}
 
 	// gets minimax answer from player and converts points to numerical values
-	public int[] getOptimalMoves(){
+	public IntSolution getOptimalMoves(boolean prune){
 		if(getWinner() != 'b' && getWinner() != 'T')
-			return new int[0];
+			return new IntSolution(new int[0], 0);
 
-		ArrayList<Point> optimalMoves =  turn.optimalMoves(board);
+		PointSolution optimalMoves =  turn.optimalMoves(board, prune);
 		ArrayList<Integer> numerical = new ArrayList<Integer>();
 		int k = 0;
 		for(int i=0; i<3; i++)
 			for(int j=0; j<3; j++){
-				if(optimalMoves.contains(new Point(j, i)))
+				if(optimalMoves.solution.contains(new Point(j, i)))
 					numerical.add(k);
 				k++;
 			}	
@@ -54,6 +54,6 @@ public class Game{
 		for(int i=0; i<numerical.size(); i++){
 			ans[i] = numerical.get(i);
 		}
-		return ans;
+		return new IntSolution(ans, optimalMoves.expandedNodes);
 	}
 }

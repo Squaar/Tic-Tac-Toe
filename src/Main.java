@@ -35,16 +35,35 @@ public class Main{
 			System.exit(0);
 		}
 
-		// get optimal moves and provide output
-		int[] optimalMoves = game.getOptimalMoves();
-		if(optimalMoves.length == 0){
+		// run without alpha beta pruning
+		IntSolution optimalMoves = game.getOptimalMoves(false);
+		System.out.println("No alpha beta pruning:");
+		if(optimalMoves.solution.length == 0){
 			System.out.println("No optimal moves found for player X.");
 		}
 		else{
 			System.out.print("The optimal moves for player X are: ");
-			for(int i: optimalMoves)
+			for(int i: optimalMoves.solution)
 				System.out.print(i + " ");
 			System.out.println();
+			System.out.println("Expanded nodes: " + optimalMoves.expandedNodes);
+		}
+
+		System.out.println();
+
+		// reset and run with alpha beta pruning
+		game = new Game(board);
+		optimalMoves = game.getOptimalMoves(true);
+		System.out.println("Using alpha beta pruning:");
+		if(optimalMoves.solution.length == 0){
+			System.out.println("No optimal moves found for player X.");
+		}
+		else{
+			System.out.print("The optimal moves for player X are: ");
+			for(int i: optimalMoves.solution)
+				System.out.print(i + " ");
+			System.out.println();
+			System.out.println("Expanded nodes: " + optimalMoves.expandedNodes);
 		}
 	}
 }

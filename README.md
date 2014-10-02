@@ -6,7 +6,8 @@ Matt Dumford - mdumfo2@uic.edu
 ##To Run
 - Use `ant` to build.
 	- If ant complains about a missing lib directory just `mkdir lib`.
-- `java -jar mdumfo2_TicTacToe.jar BOARD`
+- `java -jar mdumfo2_TicTacToe.jar [-p] BOARD`
+	- `-p` instructs the program to use alpha beta pruning.
 	- ex. `java -jar mdumfo2_TicTacToe.jar b b b X b O O X b`
 	- X for player X
 	- O for player O
