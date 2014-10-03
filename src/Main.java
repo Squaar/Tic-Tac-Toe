@@ -36,7 +36,9 @@ public class Main{
 		}
 
 		// run without alpha beta pruning
+		long time = System.nanoTime();
 		IntSolution optimalMoves = game.getOptimalMoves(false);
+		time = System.nanoTime() - time;
 		System.out.println("No alpha beta pruning:");
 		if(optimalMoves.solution.length == 0){
 			System.out.println("No optimal moves found for player X.");
@@ -47,13 +49,16 @@ public class Main{
 				System.out.print(i + " ");
 			System.out.println();
 			System.out.println("Expanded nodes: " + optimalMoves.expandedNodes);
+			System.out.println("Time: " + time/1000000 + " miliseconds");
 		}
 
 		System.out.println();
 
 		// reset and run with alpha beta pruning
 		game = new Game(board);
+		time = System.nanoTime();
 		optimalMoves = game.getOptimalMoves(true);
+		time = System.nanoTime() - time;
 		System.out.println("Using alpha beta pruning:");
 		if(optimalMoves.solution.length == 0){
 			System.out.println("No optimal moves found for player X.");
@@ -64,6 +69,7 @@ public class Main{
 				System.out.print(i + " ");
 			System.out.println();
 			System.out.println("Expanded nodes: " + optimalMoves.expandedNodes);
+			System.out.println("Time: " + time/1000000 + " miliseconds");
 		}
 	}
 }

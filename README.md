@@ -2,6 +2,7 @@ Tic-Tac-Toe
 ================
 Matt Dumford - mdumfo2@uic.edu
 
+A program to calculate the optimal moves for a tic-tac-toe board for CS411. Instructions for this assignment can be found in `HW4.pdf` and `HW5.pdf`
 
 ##To Run
 - Use `ant` to build.
